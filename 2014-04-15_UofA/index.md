@@ -13,9 +13,9 @@ assets:
 --- dt:10
   
 <style>
-iframe{
+iframe.rChart{
   height:450px;
-  width:900px;
+  width:100%;
   margin:auto auto;
 }
 
@@ -36,33 +36,72 @@ h4 {
   text-indent: 100px;
 }
 
-iframe {height: 300px; width: 900px}
+address {
+  font-size: 9px;
+  line-height: 14px;
+  position: absolute;
+  right:100px;
+  width:300px;
+}
+
 </style>
 
 
 
 
-### [Forbes 400 (2013) | How They Made Their Money](http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/)
+# Why Am I Here?
+
+---
+
+# Why Are You Here?
+
+--- 
+
+### Forbes 400 (2013) | How They Made Their Money?
 
 <iframe src='
 assets/fig/unnamed-chunk-2.html
 ' scrolling='no' seamless
 class='rChart dimple '
 id=iframe-
-chart15ac31165ee
+chart28f472d79f9
 ></iframe>
 <style>iframe.rChart{ width: 100%; height: 400px;}</style>
 
-  
----
-### [Forbes 400 (2013) | How They Made Their Money](http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/) | Bar Chart
+<address class="text-muted" style="font-size:8px;">
+    <a href = "http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/">
+    How Self-Made Forbes 400 Billionaires Earned Their Money
+    </a><br>
+    Erin Carlyle<br>
+    Forbes September 18, 2013<br>
+</address>
+
+
+--- dt:10
+
+### Forbes 400 (2013) | How They Made Their Money? | Bar Chart
+
 
 <iframe src='
 assets/fig/unnamed-chunk-3.html
 ' scrolling='no' seamless
 class='rChart dimple '
 id=iframe-
-chart15ac31165ee
+chart28f452d54d65
 ></iframe>
 <style>iframe.rChart{ width: 100%; height: 400px;}</style>
 
+
+<address class="text-muted">
+    <a href = "http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/">
+    How Self-Made Forbes 400 Billionaires Earned Their Money
+    </a><br>
+    Erin Carlyle<br>
+    Forbes September 18, 2013<br>
+</address>
+
+---
+
+### What You Might Not Know About Becoming Ultra-Wealthy?
+
+[]()

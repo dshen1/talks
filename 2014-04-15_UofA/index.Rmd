@@ -13,9 +13,9 @@ assets:
 --- dt:10
   
 <style>
-iframe{
+iframe.rChart{
   height:450px;
-  width:900px;
+  width:100%;
   margin:auto auto;
 }
 
@@ -36,7 +36,14 @@ h4 {
   text-indent: 100px;
 }
 
-iframe {height: 300px; width: 900px}
+address {
+  font-size: 9px;
+  line-height: 14px;
+  position: absolute;
+  right:100px;
+  width:300px;
+}
+
 </style>
 
 ```{r message = F, warning = F, error = F, echo = F, tidy = F, cache = F}
@@ -54,7 +61,15 @@ opts_chunk$set(
 )
 ```
 
-### [Forbes 400 (2013) | How They Made Their Money](http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/)
+# Why Am I Here?
+
+---
+
+# Why Are You Here?
+
+--- 
+
+### Forbes 400 (2013) | How They Made Their Money?
 
 ```{r}
 require(rCharts)
@@ -90,7 +105,7 @@ d1 <- dPlot(
   ,type = "line"
   ,defaultColors = "#!d3.scale.category20()!#"
   ,height = 700
-  ,width = 9000
+  ,width = 900
   ,bounds = list( x = 250, y = 50, width = 650, height = 470)
 )
 d1$xAxis(
@@ -103,16 +118,53 @@ d1$yAxis(
 )
 d1
 ```
-  
----
-### [Forbes 400 (2013) | How They Made Their Money](http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/) | Bar Chart
+<address class="text-muted" style="font-size:8px;">
+    <a href = "http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/">
+    How Self-Made Forbes 400 Billionaires Earned Their Money
+    </a><br>
+    Erin Carlyle<br>
+    Forbes September 18, 2013<br>
+</address>
+
+
+--- dt:10
+
+### Forbes 400 (2013) | How They Made Their Money? | Bar Chart
+
 
 ```{r}
-d2 <- d1$copy()
-d2$set(
-  type = "bar"
-  , groups = "selfmade"
-  , defaultColors = "#!d3.scale.category20()!#"
+d2 <- dPlot(
+  y = c("industry","selfmade")
+  ,x = "freq"
+  ,groups = "selfmade"
+  ,data = wealthData
+  ,type = "bar"
+  ,defaultColors = "#!d3.scale.category20()!#"
+  ,height = 700
+  ,width = 900
+  ,bounds = list( x = 250, y = 50, width = 650, height = 470)
+)
+d2$xAxis(
+  type = "addMeasureAxis"
+  ,outputFormat = "0.2%"
+)
+d2$yAxis(
+  type = "addCategoryAxis"
+  ,orderRule = "freq"
 )
 d2
 ```
+
+<address class="text-muted">
+    <a href = "http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/">
+    How Self-Made Forbes 400 Billionaires Earned Their Money
+    </a><br>
+    Erin Carlyle<br>
+    Forbes September 18, 2013<br>
+</address>
+
+---
+
+### What You Might Not Know About Becoming Ultra-Wealthy?
+
+[]()
