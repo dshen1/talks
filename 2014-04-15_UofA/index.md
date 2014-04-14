@@ -64,17 +64,21 @@ blockquote {
 ### Forbes 400 (2013) | How They Made Their Money?
 
 <iframe src='assets/fig/unnamed-chunk-2.html'
-                scrolling='no' seamless class='rChart dimple' id=iframe-chart28f44996368f
+                scrolling='no' seamless class='rChart dimple' id=iframe-chart28f43c2a1897
                 height=450 width = 900
                 ></iframe>
 
-<address class="text-muted" style="font-size:8px;">
+<div class = "row">
+<div class = "col-md-4 col-md-offset-8">
+<address class="text-muted">
     <a href = "http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/">
-    How Self-Made Forbes 400 Billionaires Earned Their Money
+      How Self-Made Forbes 400 Billionaires Earned Their Money
     </a><br>
     Erin Carlyle<br>
     Forbes September 18, 2013
 </address>
+</div>
+</div>
 
 
 --- dt:10
@@ -83,11 +87,12 @@ blockquote {
 
 
 <iframe src='assets/fig/unnamed-chunk-3.html'
-                scrolling='no' seamless class='rChart dimple' id=iframe-chart28f432171f32
+                scrolling='no' seamless class='rChart dimple' id=iframe-chart28f42841225e
                 height=450 width = 900
                 ></iframe>
 
-
+<div class = "row">
+<div class = "col-md-4 col-md-offset-8">
 <address class="text-muted">
     <a href = "http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/">
       How Self-Made Forbes 400 Billionaires Earned Their Money
@@ -95,6 +100,8 @@ blockquote {
     Erin Carlyle<br>
     Forbes September 18, 2013
 </address>
+</div>
+</div>
 
 ---
 
@@ -103,7 +110,7 @@ blockquote {
 <div class="row">
 <div class = "col-md-8">
 <iframe src='assets/fig/unnamed-chunk-4.html'
-                scrolling='no' seamless class='rChart dimple' id=iframe-chart28f45b62b82
+                scrolling='no' seamless class='rChart dimple' id=iframe-chart28f4437ae96
                 height=450 width = 620
                 ></iframe>
 
@@ -128,4 +135,32 @@ blockquote {
 </address>
 </div>
 </div>
+
 ---
+
+### Luck and Skill in Wealth | Wealth Concentration
+
+<div class="row">
+  <div class = "col-md-8">
+    <img src = "./assets/fig/fernholz_wealth.png" height = 500px></img>
+  </div>
+  <div class="col-md-4">
+    <br><br>
+    <blockquote style="font-size:80%;line-height:20px;">
+    "In the absence of any redistribution, the distribution of wealth is unstable over time and becomes concentrated entirely at the top. This occurs despite the fact that all households have identical patience and skill."
+    </blockquote>
+  </div>  
+</div>
+
+<div class = "row">
+<div class = "col-md-4 col-md-offset-8">
+<address class="text-muted">
+    <a href ="http://www.ricardofernholz.com/Instability.pdf">
+      Instability and Concentration in the Distribution of Wealth (Draft)
+    </a><br>
+    Fernholz, R and R Fernholz<br>
+    Claremont Mckenna College / Intech<br>
+    December 9, 2103<br>
+</address>
+</div>
+</div>
