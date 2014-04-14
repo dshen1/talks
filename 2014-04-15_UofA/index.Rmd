@@ -1,0 +1,118 @@
+---
+title: Anything and Everything
+author: TimelyPortfolio
+license: by-nc-sa
+widgets: [mathjax, bootstrap]
+github: {user: timelyportfolio, repo: talks/2014-04-15_UofA}
+mode: selfcontained
+hitheme: solarized_light
+assets:
+  css:
+  - "http://fonts.googleapis.com/css?family=Raleway:300"
+  - "http://fonts.googleapis.com/css?family=Oxygen"
+--- dt:10
+  
+<style>
+iframe{
+  height:450px;
+  width:900px;
+  margin:auto auto;
+}
+
+body{
+  font-family: 'Oxygen', sans-serif;
+}
+
+h1,h2,h3,h4 {
+  font-family: 'Raleway', sans-serif;
+}
+
+h3 {
+  background-color: #D4DAEC;
+    text-indent: 100px; 
+}
+
+h4 {
+  text-indent: 100px;
+}
+
+iframe {height: 300px; width: 900px}
+</style>
+
+```{r message = F, warning = F, error = F, echo = F, tidy = F, cache = F}
+require(knitr)
+opts_chunk$set(
+  message = F,
+  warning = F,
+  echo = F,
+  error = F,
+  tidy = F,
+  cache = F,
+  fig.width = 11,
+  fig.height = 5,
+  results = 'asis'
+)
+```
+
+### [Forbes 400 (2013) | How They Made Their Money](http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/)
+
+```{r}
+require(rCharts)
+
+wealthData <- data.frame(
+  industry = c(
+    "Investments","Technology","Real Estate","Fashion and Retail","Media","Food and Beverage","Energy","Healthcare","Sports","Manufacturing"
+    ,"Investments","Service","Fashion and Retail","Energy","Food and Beverage","Media","Manufacturing","Real Estate","Diversified","Technology","Healthcare"
+  )
+  ,selfmade = c(rep(T,10),rep(F,11))
+  ,freq = c(
+    c(77,45,22,18,17,15,12,11,10,10)/273
+    ,c(19,17,17,16,14,11,10,5,3,3,3)/(400-273)
+  )
+)
+
+n1 <- nPlot(
+  freq ~ industry
+  ,group = "selfmade"
+  ,data = wealthData
+  ,type = "multiBarHorizontalChart"
+)
+n1$yAxis(
+  tickFormat = "#! function(d) { return d3.format('0.2%')(d) }!#"
+)
+#n1
+
+d1 <- dPlot(
+  y = c("industry","selfmade")
+  ,x = "freq"
+  ,groups = "industry"
+  ,data = wealthData
+  ,type = "line"
+  ,defaultColors = "#!d3.scale.category20()!#"
+  ,height = 700
+  ,width = 9000
+  ,bounds = list( x = 250, y = 50, width = 650, height = 470)
+)
+d1$xAxis(
+  type = "addMeasureAxis"
+  ,outputFormat = "0.2%"
+)
+d1$yAxis(
+  type = "addCategoryAxis"
+  ,orderRule = "freq"
+)
+d1
+```
+  
+---
+### [Forbes 400 (2013) | How They Made Their Money](http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/) | Bar Chart
+
+```{r}
+d2 <- d1$copy()
+d2$set(
+  type = "bar"
+  , groups = "selfmade"
+  , defaultColors = "#!d3.scale.category20()!#"
+)
+d2
+```
