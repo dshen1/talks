@@ -29,6 +29,7 @@ h1,h2,h3,h4 {
 
 h3 {
   background-color: #D4DAEC;
+  font-size:110%;
     text-indent: 100px; 
 }
 
@@ -39,11 +40,14 @@ h4 {
 address {
   font-size: 9px;
   line-height: 14px;
-  position: absolute;
+/*  position: absolute;
   right:100px;
-  width:300px;
+  width:300px;*/
 }
 
+blockquote {
+  background-color:rgb(38, 41, 35)
+}
 </style>
 
 ```{r message = F, warning = F, error = F, echo = F, tidy = F, cache = F}
@@ -72,7 +76,104 @@ opts_chunk$set(
 ### Forbes 400 (2013) | How They Made Their Money?
 
 ```{r}
-require(rCharts)
+require(rCharts);require(rjson)
+
+#modify show without reinstall to fix the height
+Dimple2 <- setRefClass(
+  "Dimple2",
+  contains = "Dimple",
+  methods = list(
+    initialize = function(){
+      callSuper(); 
+    },
+    #override the show here
+    show = function (mode_ = NULL, ...) 
+    {
+        mode_ = getMode(mode_)
+        switch(mode_, static = {
+            viewer = getOption("viewer")
+            if (!grepl("^http", LIB$url) && !is.null(viewer)) {
+                temp_dir = tempfile(pattern = "rCharts")
+                dir.create(temp_dir)
+                suppressMessages(copy_dir_(LIB$url, file.path(temp_dir, 
+                    LIB$name)))
+                tf <- file.path(temp_dir, "index.html")
+                writeLines(.self$render(..., static = F), tf)
+                viewer(tf)
+            } else {
+                writeLines(.self$render(..., static = T), tf <- tempfile(fileext = ".html"))
+                if (!is.null(viewer)) {
+                    viewer(tf)
+                } else {
+                    browseURL(tf)
+                }
+            }
+        }, server = {
+            shiny_copy = .self$copy()
+            shiny_copy$params$dom = "show"
+            assign(".rChart_object", shiny_copy, envir = .GlobalEnv)
+            if (packageVersion("shiny") > 0.7) {
+                brwsr <- getOption("viewer", interactive())
+            } else {
+                brwsr <- getOption("shiny.launch.browser", interactive())
+            }
+            shiny::runApp(file.path(system.file(package = "rCharts"), 
+                "shiny"), launch.browser = brwsr)
+        }, inline = {
+            add_ext_widgets(lib)
+            return(.self$print(...))
+        }, iframe = {
+            chunk_opts_ = opts_current$get()
+            file_ = knitr:::fig_path(".html", chunk_opts_)
+            if (!file.exists(dirname(file_))) {
+                dir.create(dirname(file_))
+            }
+            cdn = !(chunk_opts_$rcharts %?=% "draft")
+            .self$save(file_, cdn = cdn)
+            writeLines(
+              sprintf(
+                "<iframe src='%s'
+                scrolling='no' seamless class='rChart %s' id=iframe-%s
+                height=%s width = %s
+                ></iframe>"
+                ,file_
+                ,lib
+                ,params$dom
+                ,params$height
+                ,params$width
+              )
+            )
+            return(invisible())
+        }, iframesrc = {
+            writeLines(
+              c(
+                "<iframe srcdoc='", htmlspecialchars(.self$render(...)), 
+                "' scrolling='no' seamless class='rChart ",
+                lib, 
+                " ' height = ",
+                paste0(params$height,"px"),
+                " ' width = ",
+                paste0(params$width,"px"),                
+                paste0("id='iframe-", params$dom, "'>"),
+                "</iframe>"
+              )
+            )
+            return(invisible())
+        })
+    }
+))
+
+dPlot2 <- function(x, data, ...){
+  myChart <- Dimple2$new()
+  myChart$getChartParams(x, data, ...)
+  #set these to dimple since use all of its config.yml and layouts
+  #dimple2 will not exist
+  myChart$setLib("dimple")
+  #make this blank by default
+  #not sure why this does not happen when overriding refclass
+  myChart$setTemplate(afterScript="<script></script>")
+  return(myChart$copy())
+}
 
 wealthData <- data.frame(
   industry = c(
@@ -97,16 +198,16 @@ n1$yAxis(
 )
 #n1
 
-d1 <- dPlot(
+d1 <- dPlot2(
   y = c("industry","selfmade")
   ,x = "freq"
   ,groups = "industry"
   ,data = wealthData
   ,type = "line"
   ,defaultColors = "#!d3.scale.category20()!#"
-  ,height = 700
+  ,height = 450
   ,width = 900
-  ,bounds = list( x = 250, y = 50, width = 650, height = 470)
+  ,bounds = list( x = 250, y = 20, width = 650, height = 420)
 )
 d1$xAxis(
   type = "addMeasureAxis"
@@ -123,7 +224,7 @@ d1
     How Self-Made Forbes 400 Billionaires Earned Their Money
     </a><br>
     Erin Carlyle<br>
-    Forbes September 18, 2013<br>
+    Forbes September 18, 2013
 </address>
 
 
@@ -133,16 +234,16 @@ d1
 
 
 ```{r}
-d2 <- dPlot(
+d2 <- dPlot2(
   y = c("industry","selfmade")
   ,x = "freq"
   ,groups = "selfmade"
   ,data = wealthData
   ,type = "bar"
   ,defaultColors = "#!d3.scale.category20()!#"
-  ,height = 700
+  ,height = 450
   ,width = 900
-  ,bounds = list( x = 250, y = 50, width = 650, height = 470)
+  ,bounds = list( x = 250, y = 20, width = 650, height = 420)
 )
 d2$xAxis(
   type = "addMeasureAxis"
@@ -157,14 +258,64 @@ d2
 
 <address class="text-muted">
     <a href = "http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/">
-    How Self-Made Forbes 400 Billionaires Earned Their Money
+      How Self-Made Forbes 400 Billionaires Earned Their Money
     </a><br>
     Erin Carlyle<br>
-    Forbes September 18, 2013<br>
+    Forbes September 18, 2013
 </address>
 
 ---
 
-### What You Might Not Know About Becoming Ultra-Wealthy?
+### More About Becoming Ultra-Wealthy
 
-[]()
+<div class="row">
+<div class = "col-md-8">
+```{r}
+d3 <- dPlot2(
+  Source ~ Percentage
+  ,groups = "Source"
+  ,data=data.frame(
+    Source = c("Business Ownership", "Wealth Management", "Marriage and Inheritance","Real Estate")
+    ,Percentage = c(.60,.20,.12,.08)
+  )  
+  ,type = "bar"
+  ,defaultColors = "#!d3.scale.category20()!#"
+  ,height = 450
+  ,width = 620
+  ,bounds = list( x = 150, y = 20, width = 500, height = 400)
+)
+d3$xAxis(
+  type = "addMeasureAxis"
+  ,outputFormat = "0.2%"
+)
+d3$yAxis(
+  type = "addCategoryAxis"
+  ,orderRule = "Percentage"
+)
+#d3$setTemplate(
+#  chartDiv = "<{{container}} id = {{chartId}} height = {{height}} width = 100%></{{ #container}}>"
+#)
+d3
+```
+  </div>
+  <div class="col-md-4">
+    <br><br>
+    <blockquote style="font-size:80%;line-height:20px;">
+    "Wealth mobility, it turns out, requires idiosyncratic risk, concentration, and (nonrecourse) leverage--all factors that MPT seeks to eliminate in a standard diversified portfolio."
+    </blockquote>
+  </div>
+</div>
+<div class = "row">
+<div class = "col-md-4 col-md-offset-8">
+<address class="text-muted">
+    <a href = "A Risk-Based Asset Allocation Framework for Unstable Markets">
+      A Risk-Based Asset Allocation Framework for Unstable Markets
+    </a><br>
+    Ashvin B. Chhabra<br>
+    CFA Article Collections for Practitioners<br>
+    October 2013, Vol. 29, No. 4<br>
+    (doi: 10.2469/cp.v29.n4.1)
+</address>
+</div>
+</div>
+---

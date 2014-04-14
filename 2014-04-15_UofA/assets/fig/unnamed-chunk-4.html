@@ -11,7 +11,7 @@
       display: block;
       margin-left: auto; 
       margin-right: auto;
-      width: 900px;
+      width: 620px;
       height: 450px;
     }  
     </style>
@@ -19,11 +19,11 @@
   </head>
   <body >
     
-    <div id = 'chart28f432171f32' class = 'rChart dimple'></div>    
+    <div id = 'chart28f45b62b82' class = 'rChart dimple'></div>    
     <script type="text/javascript">
   var opts = {
- "dom": "chart28f432171f32",
-"width":    900,
+ "dom": "chart28f45b62b82",
+"width":    620,
 "height":    450,
 "xAxis": {
  "type": "addMeasureAxis",
@@ -33,26 +33,26 @@
 "yAxis": {
  "type": "addCategoryAxis",
 "showPercent": false,
-"orderRule": "freq" 
+"orderRule": "Percentage" 
 },
 "zAxis": [],
 "colorAxis": [],
 "defaultColors": d3.scale.category20(),
 "layers": [],
 "legend": [],
-"x": "freq",
-"y": [ "industry", "selfmade" ],
-"groups": "selfmade",
+"x": "Percentage",
+"y": "Source",
+"groups": "Source",
 "type": "bar",
 "bounds": {
- "x":    250,
+ "x":    150,
 "y":     20,
-"width":    650,
-"height":    420 
+"width":    500,
+"height":    400 
 },
-"id": "chart28f432171f32" 
+"id": "chart28f45b62b82" 
 },
-    data = [{"industry":"Investments","selfmade":true,"freq":0.282051282051282},{"industry":"Technology","selfmade":true,"freq":0.164835164835165},{"industry":"Real Estate","selfmade":true,"freq":0.0805860805860806},{"industry":"Fashion and Retail","selfmade":true,"freq":0.0659340659340659},{"industry":"Media","selfmade":true,"freq":0.0622710622710623},{"industry":"Food and Beverage","selfmade":true,"freq":0.0549450549450549},{"industry":"Energy","selfmade":true,"freq":0.043956043956044},{"industry":"Healthcare","selfmade":true,"freq":0.0402930402930403},{"industry":"Sports","selfmade":true,"freq":0.0366300366300366},{"industry":"Manufacturing","selfmade":true,"freq":0.0366300366300366},{"industry":"Investments","selfmade":false,"freq":0.149606299212598},{"industry":"Service","selfmade":false,"freq":0.133858267716535},{"industry":"Fashion and Retail","selfmade":false,"freq":0.133858267716535},{"industry":"Energy","selfmade":false,"freq":0.125984251968504},{"industry":"Food and Beverage","selfmade":false,"freq":0.110236220472441},{"industry":"Media","selfmade":false,"freq":0.0866141732283465},{"industry":"Manufacturing","selfmade":false,"freq":0.078740157480315},{"industry":"Real Estate","selfmade":false,"freq":0.0393700787401575},{"industry":"Diversified","selfmade":false,"freq":0.0236220472440945},{"industry":"Technology","selfmade":false,"freq":0.0236220472440945},{"industry":"Healthcare","selfmade":false,"freq":0.0236220472440945}];
+    data = [{"Source":"Business Ownership","Percentage":0.6},{"Source":"Wealth Management","Percentage":0.2},{"Source":"Marriage and Inheritance","Percentage":0.12},{"Source":"Real Estate","Percentage":0.08}];
   var svg = dimple.newSvg("#" + opts.id, opts.width, opts.height);
 
   //data = dimple.filterData(data, "Owner", ["Aperture", "Black Mesa"])

@@ -29,6 +29,7 @@ h1,h2,h3,h4 {
 
 h3 {
   background-color: #D4DAEC;
+  font-size:110%;
     text-indent: 100px; 
 }
 
@@ -39,11 +40,14 @@ h4 {
 address {
   font-size: 9px;
   line-height: 14px;
-  position: absolute;
+/*  position: absolute;
   right:100px;
-  width:300px;
+  width:300px;*/
 }
 
+blockquote {
+  background-color:rgb(38, 41, 35)
+}
 </style>
 
 
@@ -59,21 +63,17 @@ address {
 
 ### Forbes 400 (2013) | How They Made Their Money?
 
-<iframe src='
-assets/fig/unnamed-chunk-2.html
-' scrolling='no' seamless
-class='rChart dimple '
-id=iframe-
-chart28f472d79f9
-></iframe>
-<style>iframe.rChart{ width: 100%; height: 400px;}</style>
+<iframe src='assets/fig/unnamed-chunk-2.html'
+                scrolling='no' seamless class='rChart dimple' id=iframe-chart28f44996368f
+                height=450 width = 900
+                ></iframe>
 
 <address class="text-muted" style="font-size:8px;">
     <a href = "http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/">
     How Self-Made Forbes 400 Billionaires Earned Their Money
     </a><br>
     Erin Carlyle<br>
-    Forbes September 18, 2013<br>
+    Forbes September 18, 2013
 </address>
 
 
@@ -82,26 +82,50 @@ chart28f472d79f9
 ### Forbes 400 (2013) | How They Made Their Money? | Bar Chart
 
 
-<iframe src='
-assets/fig/unnamed-chunk-3.html
-' scrolling='no' seamless
-class='rChart dimple '
-id=iframe-
-chart28f452d54d65
-></iframe>
-<style>iframe.rChart{ width: 100%; height: 400px;}</style>
+<iframe src='assets/fig/unnamed-chunk-3.html'
+                scrolling='no' seamless class='rChart dimple' id=iframe-chart28f432171f32
+                height=450 width = 900
+                ></iframe>
 
 
 <address class="text-muted">
     <a href = "http://www.forbes.com/sites/erincarlyle/2013/09/18/how-self-made-forbes-400-billionaires-earned-their-money/">
-    How Self-Made Forbes 400 Billionaires Earned Their Money
+      How Self-Made Forbes 400 Billionaires Earned Their Money
     </a><br>
     Erin Carlyle<br>
-    Forbes September 18, 2013<br>
+    Forbes September 18, 2013
 </address>
 
 ---
 
-### What You Might Not Know About Becoming Ultra-Wealthy?
+### More About Becoming Ultra-Wealthy
 
-[]()
+<div class="row">
+<div class = "col-md-8">
+<iframe src='assets/fig/unnamed-chunk-4.html'
+                scrolling='no' seamless class='rChart dimple' id=iframe-chart28f45b62b82
+                height=450 width = 620
+                ></iframe>
+
+  </div>
+  <div class="col-md-4">
+    <br><br>
+    <blockquote style="font-size:80%;line-height:20px;">
+    "Wealth mobility, it turns out, requires idiosyncratic risk, concentration, and (nonrecourse) leverage--all factors that MPT seeks to eliminate in a standard diversified portfolio."
+    </blockquote>
+  </div>
+</div>
+<div class = "row">
+<div class = "col-md-4 col-md-offset-8">
+<address class="text-muted">
+    <a href = "A Risk-Based Asset Allocation Framework for Unstable Markets">
+      A Risk-Based Asset Allocation Framework for Unstable Markets
+    </a><br>
+    Ashvin B. Chhabra<br>
+    CFA Article Collections for Practitioners<br>
+    October 2013, Vol. 29, No. 4<br>
+    (doi: 10.2469/cp.v29.n4.1)
+</address>
+</div>
+</div>
+---
