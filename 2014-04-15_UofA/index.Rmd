@@ -48,6 +48,10 @@ address {
 blockquote {
   background-color:rgb(38, 41, 35)
 }
+
+.title-slide {
+  background-color: rgba(173, 177, 152, 0.31);
+}
 </style>
 
 ```{r message = F, warning = F, error = F, echo = F, tidy = F, cache = F}
@@ -65,11 +69,11 @@ opts_chunk$set(
 )
 ```
 
-# Why Am I Here?
+## Why Am I Here?
 
 ---
 
-# Why Are You Here?
+## Why Are You Here?
 
 --- 
 
